@@ -1,53 +1,58 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  TextInput,
+  View,
+  Button,
+  Alert
 } from 'react-native';
 
+const onButtonPress = () => {
+  Alert.alert('Button has been pressed!');
+};
+
 export default class AwesomeLab extends Component {
+    constructor(props) {
+    super(props);
+    this.state = { text: 'Useless Placeholder' };
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+      <View style={styles.topTitle}>
+        <Text style={styles.welcome}>Welcome to Awesome Lab</Text>
+        <Text style={styles.instructions}>Lor</Text>
+        <View style={styles.buttonView}><Button onPress={onButtonPress} title="Start"
+          accessibilityLabel="See an informative alert"
+        /></View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  topTitle: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    marginTop: 40
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 30,
     textAlign: 'center',
-    margin: 10,
+    margin: 3
   },
   instructions: {
-    textAlign: 'center',
+    textAlign: 'left',
     color: '#333333',
-    marginBottom: 5,
+    margin: 15
   },
+  buttonView: {
+    marginTop:15,
+    marginLeft:80,
+    marginRight:80
+  }
 });
 
 AppRegistry.registerComponent('AwesomeLab', () => AwesomeLab);
