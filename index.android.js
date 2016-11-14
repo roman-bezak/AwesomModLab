@@ -10,46 +10,72 @@ import {
   Alert
 } from 'react-native';
 
-const onButtonPress = () => {
-  Alert.alert('Button has been pressed!');
-};
+
 
 export default class AwesomeLab extends Component {
     constructor(props) {
     super(props);
-    this.state = { text: 'Useless Placeholder' };
+//    this.stateQ = {renderPlaceholderOnly: true};
+    this.state = {
+      a: '',
+      b: '',
+      n: ''
+    }
   }
+
+  onButtonPress = () => {
+
+    this.setState({renderPlaceholderOnly: false});
+  };
+
   render() {
-    return (
-      <View style={styles.topTitle}>
-        <Text style={styles.welcome}>Welcome to Awesome Lab</Text>
-        <Text style={styles.instructions}>Lor</Text>
-        <View style={styles.buttonView}><Button onPress={onButtonPress} title="Start"
-          accessibilityLabel="See an informative alert"
-        /></View>
-      </View>
+    // if(this.stateQ.renderPlaceholderOnly){
+    //     return (
+    //         //start scene
+    //         <View style={styles.rootContainer}>
+    //           <Text style={styles.welcome}>Welcome to Awesome Lab</Text>
+    //           <View style={styles.buttonView}><Button onPress={this.onButtonPress} color="#607D8B" title="Start"
+    //             accessibilityLabel="See an informative alert"/>
+    //           </View>
+    //         </View>
+    //
+    //     );
+    // }
+
+    return(
+
+      <View><Text style={styles.welcome}>Welcome to Awesome Lab</Text>
+
+      <Text>A: </Text>
+      <TextInput
+        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        onChangeText={(a) => this.setState({a})}
+        value={this.state.a}
+        keyboardType = {'numeric'}
+      />
+</View>
     );
   }
+
+
 }
 
 const styles = StyleSheet.create({
-  topTitle: {
+
+  rootContainer: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
-    marginTop: 40
+    backgroundColor: '#fff',
+    paddingTop: 120
   },
   welcome: {
-    fontSize: 30,
+    color: '#455A64',
+    fontSize: 32,
     textAlign: 'center',
+    fontWeight: 'bold',
     margin: 3
   },
-  instructions: {
-    textAlign: 'left',
-    color: '#333333',
-    margin: 15
-  },
   buttonView: {
-    marginTop:15,
+    marginTop:35,
     marginLeft:80,
     marginRight:80
   }
