@@ -23,7 +23,12 @@ export default class AwesomeLab extends Component {
     }
   }
 
-  onButtonPress = () => {
+  onStartButtonPress = () => {
+
+    this.setState({renderPlaceholderOnly: false});
+  };
+
+  onClaculatePress = () => {
 
     this.setState({renderPlaceholderOnly: false});
   };
@@ -34,7 +39,7 @@ export default class AwesomeLab extends Component {
     //         //start scene
     //         <View style={styles.rootContainer}>
     //           <Text style={styles.welcome}>Welcome to Awesome Lab</Text>
-    //           <View style={styles.buttonView}><Button onPress={this.onButtonPress} color="#607D8B" title="Start"
+    //           <View style={styles.buttonView}><Button onPress={this.onStartButtonPress} color="#607D8B" title="Start"
     //             accessibilityLabel="See an informative alert"/>
     //           </View>
     //         </View>
@@ -46,13 +51,39 @@ export default class AwesomeLab extends Component {
 
       <View><Text style={styles.welcome}>Welcome to Awesome Lab</Text>
 
-      <Text>A: </Text>
       <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        placeholder="Enter A"
+        placeholderTextColor="#000000"
+        style={{height: 40, borderColor: '#000000', borderWidth: 1, borderRadius: 14, margin: 15, marginBottom: 3}}
         onChangeText={(a) => this.setState({a})}
         value={this.state.a}
         keyboardType = {'numeric'}
+        underlineColorAndroid = {'transparent'}
       />
+
+      <TextInput
+        placeholder="Enter B"
+        placeholderTextColor="#000000"
+        style={{height: 40, borderColor: '#000000', borderWidth: 1, borderRadius: 14, margin: 15, marginBottom: 3}}
+        onChangeText={(b) => this.setState({b})}
+        value={this.state.b}
+        keyboardType = {'numeric'}
+        underlineColorAndroid = {'transparent'}
+      />
+
+      <TextInput
+        placeholder="Enter N"
+        placeholderTextColor="#000000"
+        style={{height: 40, borderColor: '#000000', borderWidth: 1, borderRadius: 14, margin: 15, marginBottom: 3}}
+        onChangeText={(n) => this.setState({n})}
+        value={this.state.n}
+        keyboardType = {'numeric'}
+        underlineColorAndroid = {'transparent'}
+      />
+
+        <View style={styles.buttonView}><Button onPress={this.onClaculatePress} color="#f20048" title="Calculate"
+            accessibilityLabel="See an informative alert"/>
+        </View>
 </View>
     );
   }
