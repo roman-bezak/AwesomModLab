@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 
+import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -9,7 +9,6 @@ import {
   Button,
   Alert
 } from 'react-native';
-
 
 
 export default class AwesomeLab extends Component {
@@ -30,7 +29,45 @@ export default class AwesomeLab extends Component {
 
   onClaculatePress = () => {
 
-    this.setState({renderPlaceholderOnly: false});
+    //this.setState({renderPlaceholderOnly: false});
+    this.calculate();
+  };
+
+  calculate = () => {
+
+    var a = parseInt(this.state.a);
+    var b = parseInt(this.state.b);
+    var n = parseInt(this.state.n);
+    var sum = 0;
+    var mx = 0;
+    var dx = 0;
+    var sigma = 0;
+    var data = [];
+
+    if((typeof a === 'number') && (typeof b === 'number') && (typeof n === 'number')){
+
+      for (var i = 0; i < n; i++) {
+        data.push(a + (b - a) * Math.random());
+      }
+
+      for (var i = 0; i < data.length; i++) {
+        sum += data[i];
+      }
+
+      mx = sum / n;
+      sum = 0;
+
+      for (var i = 0; i < data.length; i++){
+        sum += (data[i] - mx) * (data[i] - mx);
+      }
+
+      dx = sum / n;
+      sigma = Math.sqrt(dx);
+
+      alert(mx + " " + dx + " " + sigma);
+
+    }else return;
+
   };
 
   render() {
@@ -49,7 +86,7 @@ export default class AwesomeLab extends Component {
 
     return(
 
-      <View><Text style={styles.welcome}>Weelcome to Awesome Lab</Text>
+      <View><Text style={styles.welcome}>Welcome to Awesome Lab</Text>
 
       <TextInput
         placeholder="Enter A"
@@ -100,7 +137,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     color: '#455A64',
-    fontSize: 33,
+    fontSize: 32,
     textAlign: 'center',
     fontWeight: 'bold',
     margin: 3
